@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generate personalized ASSIGNMENT.md from template.
-CSC3301 Programming Language Paradigms
+CSC3301 Programming Language Paradigms - Project 3: Design Patterns
 """
 import json
 from pathlib import Path
@@ -27,21 +27,27 @@ def main():
 
     template = template_path.read_text()
 
-    # Replace placeholders
-    scope = variant["scope_values"]
-    counter = variant["counter_tests"]
-    closure = variant["closure_tests"]
-    introspection = variant["introspection_tests"]
+    # Replace placeholders with proj03 variant keys
+    domain = variant["domain"]
+    variant_patterns = variant["variant_patterns"]
 
     assignment = template
     assignment = assignment.replace("{{STUDENT_ID}}", variant["student_id"])
-    assignment = assignment.replace("{{GLOBAL_VALUE}}", scope["global"])
-    assignment = assignment.replace("{{ENCLOSING_VALUE}}", scope["enclosing"])
-    assignment = assignment.replace("{{LOCAL_VALUE}}", scope["local"])
-    assignment = assignment.replace("{{COUNTER_INITIAL}}", str(counter["initial_values"][0]))
-    assignment = assignment.replace("{{MULTIPLIER_INPUT}}", str(closure["multiplier_input"]))
-    assignment = assignment.replace("{{EXPECTED_RESULTS}}", str(closure["expected_results"]))
-    assignment = assignment.replace("{{SECRET_VALUE}}", str(introspection["secret_value"]))
+    assignment = assignment.replace("{{DOMAIN_NAME}}", domain["name"])
+    assignment = assignment.replace("{{DOMAIN_CONTEXT}}", domain["context"])
+    assignment = assignment.replace("{{DOMAIN_EXAMPLES}}", ", ".join(domain["examples"]))
+    
+    # Variant patterns
+    assignment = assignment.replace("{{VARIANT_PATTERN_1}}", variant_patterns[0]["name"])
+    assignment = assignment.replace("{{VARIANT_PATTERN_1_DESC}}", variant_patterns[0]["description"])
+    assignment = assignment.replace("{{VARIANT_PATTERN_1_CATEGORY}}", variant_patterns[0]["category"])
+    assignment = assignment.replace("{{VARIANT_PATTERN_2}}", variant_patterns[1]["name"])
+    assignment = assignment.replace("{{VARIANT_PATTERN_2_DESC}}", variant_patterns[1]["description"])
+    assignment = assignment.replace("{{VARIANT_PATTERN_2_CATEGORY}}", variant_patterns[1]["category"])
+    
+    # All patterns list
+    assignment = assignment.replace("{{ALL_PATTERNS}}", ", ".join(variant["all_patterns"]))
+    assignment = assignment.replace("{{TOTAL_PATTERNS}}", str(variant["total_patterns"]))
 
     # Write personalized assignment
     output_path = repo_root / "ASSIGNMENT.md"
