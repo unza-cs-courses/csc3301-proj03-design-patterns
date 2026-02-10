@@ -20,15 +20,15 @@ class Subject(ABC):
         # YOUR CODE
         pass
     
-    def notify(self) -> None:
+    def notify(self, event: str = None) -> None:
         # YOUR CODE
         pass
 
 class Observer(ABC):
     """Observer interface."""
-    
+
     @abstractmethod
-    def update(self, subject: Subject) -> None:
+    def update(self, event: str) -> None:
         pass
 
 # YOUR CODE: Implement ConcreteSubject, ConcreteObserverA, ConcreteObserverB

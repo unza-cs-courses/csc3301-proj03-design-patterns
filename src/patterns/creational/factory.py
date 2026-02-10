@@ -25,5 +25,20 @@ class Creator(ABC, Generic[T]):
         product = self.factory_method()
         return f"Creator: {product.operation()}"
 
+class ShapeFactory:
+    """Factory for creating shapes."""
+
+    @staticmethod
+    def create(product_type: str):
+        """Create a shape based on product_type.
+
+        Args:
+            product_type: The type of shape to create (e.g., 'circle', 'square')
+
+        Returns:
+            A shape instance
+        """
+        raise NotImplementedError("ShapeFactory.create() not yet implemented")
+
 # YOUR CODE: Implement ConcreteProductA, ConcreteProductB
 # YOUR CODE: Implement ConcreteCreatorA, ConcreteCreatorB
