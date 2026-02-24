@@ -153,7 +153,6 @@ Your implementation should use examples from your assigned domain:
 │   └── uml/                     # UML diagrams go here
 ├── .github/
 │   └── workflows/
-│       ├── autograding.yml      # Runs tests on push
 │       └── generate-variant.yml # Generates variant on repo creation
 ├── .variant_config.json         # Your unique variant (auto-generated)
 ├── ASSIGNMENT.md                # Your personalized assignment (auto-generated)
@@ -186,9 +185,12 @@ pytest tests/visible/ -v
 pytest tests/visible/ --cov=src --cov-report=term-missing
 ```
 
+**Note:** Testing is local-only. There is no automatic feedback on push — you must run tests yourself before submitting.
+
 ## Submission
 
-Push your code to the repository. GitHub Actions will automatically run tests on each push. Check the Actions tab for results.
+1. Run tests locally and ensure they pass: `pytest tests/visible/ -v`
+2. Push your code to the repository before the deadline
 
 ---
 
