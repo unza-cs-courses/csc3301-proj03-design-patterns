@@ -3,3 +3,7 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 venv/
+
+# Generated per-student artifacts (created by workflow / scripts)
+.variant_config.json
+ASSIGNMENT.md
