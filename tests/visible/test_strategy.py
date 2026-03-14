@@ -13,29 +13,39 @@ class TestStrategyBasics:
     """Basic tests for Strategy pattern - will fail on stub code."""
 
     def test_concrete_strategy_a_exists(self):
-        """ConcreteStrategyA must be implemented."""
+        """ConcreteStrategyA must be implemented and functional."""
         try:
             from src.patterns.behavioral.strategy import ConcreteStrategyA
             strategy = ConcreteStrategyA()
             assert strategy is not None
+            # Must actually work, not just raise NotImplementedError
+            result = strategy.execute([3, 1, 2])
+            assert isinstance(result, list), "execute() must return a list"
         except ImportError:
             pytest.fail("ConcreteStrategyA must be implemented")
 
     def test_concrete_strategy_b_exists(self):
-        """ConcreteStrategyB must be implemented."""
+        """ConcreteStrategyB must be implemented and functional."""
         try:
             from src.patterns.behavioral.strategy import ConcreteStrategyB
             strategy = ConcreteStrategyB()
             assert strategy is not None
+            # Must actually work, not just raise NotImplementedError
+            result = strategy.execute([3, 1, 2])
+            assert isinstance(result, list), "execute() must return a list"
         except ImportError:
             pytest.fail("ConcreteStrategyB must be implemented")
 
     def test_strategy_inherits_from_base(self):
-        """ConcreteStrategy must inherit from Strategy."""
+        """ConcreteStrategy must inherit from Strategy and be functional."""
         try:
             from src.patterns.behavioral.strategy import ConcreteStrategyA
             strategy = ConcreteStrategyA()
             assert isinstance(strategy, Strategy), "Must inherit from Strategy"
+            # Must actually produce a result, not raise NotImplementedError
+            result = strategy.execute([5, 2, 8])
+            assert result is not None, "execute() must return a result"
+            assert isinstance(result, list), "execute() must return a list"
         except ImportError:
             pytest.fail("ConcreteStrategyA must be implemented")
 

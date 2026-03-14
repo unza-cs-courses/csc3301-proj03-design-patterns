@@ -9,8 +9,8 @@ class Subject(ABC):
     """Subject that observers watch."""
     
     def __init__(self):
-        self._observers: List['Observer'] = []
-        self._state: Any = None
+        # TODO: Initialize observer list and any internal state
+        pass
     
     def attach(self, observer: 'Observer') -> None:
         # YOUR CODE

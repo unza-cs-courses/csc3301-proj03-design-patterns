@@ -14,19 +14,25 @@ class Strategy(ABC):
 
 class Context:
     """Context uses a Strategy."""
-    
-    def __init__(self, strategy: Strategy):
-        self._strategy = strategy
-    
+
+    def __init__(self, strategy: Strategy = None):
+        # TODO: Store the strategy
+        ...
+
     def set_strategy(self, strategy: Strategy) -> None:
-        self._strategy = strategy
-    
+        """Set the strategy at runtime."""
+        # TODO: Update the current strategy
+        ...
+
     def execute_strategy(self, data: List[int]) -> List[int]:
-        return self._strategy.execute(data)
+        """Execute the current strategy on data."""
+        # TODO: Delegate to the strategy's execute method
+        ...
 
     def do_something(self, data: List[int]) -> List[int]:
         """Alias for execute_strategy (used by visible tests)."""
-        return self.execute_strategy(data)
+        # TODO: Delegate to execute_strategy
+        ...
 
 class ConcreteStrategyA(Strategy):
     """Concrete strategy A."""

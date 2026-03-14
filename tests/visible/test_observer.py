@@ -21,7 +21,7 @@ class TestObserverBasics:
             def __init__(self):
                 self.updated = False
 
-            def update(self, subject: Subject) -> None:
+            def update(self, event: str) -> None:
                 self.updated = True
 
         # Create a concrete subject (need to test with ConcreteSubject)
@@ -45,7 +45,7 @@ class TestObserverBasics:
             pytest.fail("ConcreteSubject must be implemented")
 
         class TestObserver(Observer):
-            def update(self, subject: Subject) -> None:
+            def update(self, event: str) -> None:
                 pass
 
         subject = ConcreteSubject()
@@ -67,7 +67,7 @@ class TestObserverBasics:
         update_count = [0]
 
         class TestObserver(Observer):
-            def update(self, subject: Subject) -> None:
+            def update(self, event: str) -> None:
                 update_count[0] += 1
 
         subject = ConcreteSubject()
